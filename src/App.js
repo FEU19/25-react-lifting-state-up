@@ -16,7 +16,7 @@ function App() {
                 nextScreen={() => setCurrentScreen('game')} /> )
             break;
         case 'game':
-            content = ( <Game /> )
+            content = ( <Game answeredCorrectly={() => setScore(score + 1)} /> )
             break;
         default:
             content = ( <Result score={score} /> )
@@ -31,6 +31,8 @@ function App() {
                 <Bordered>
                     {content}
                 </Bordered>
+
+                Score: {score}
             </main>
         </div>
     );

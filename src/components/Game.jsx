@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Game = () => {
+const Game = ({ answeredCorrectly }) => {
     const questions = getQuestions();
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
@@ -9,6 +9,9 @@ const Game = () => {
 
     const handleUserDecided = () => {
         setUserDecided(true);
+        if( selectedAnswer === q.correct ) {
+            answeredCorrectly();  // report score
+        }
         setTimeout(() => {
             setCurrentQuestion(currentQuestion + 1);
             setSelectedAnswer(null);
@@ -51,9 +54,9 @@ function getQuestions() {
             correct: 1
         },
         {
-            question: 'Vem i klassen har bäst kaffemaskin?',
-            answers: ['Agustin'],
-            correct: 0
+            question: 'Vem har bäst kaffemaskin?',
+            answers: ['Skolan', 'Donken', 'Waynes Coffe', 'Agustin'],
+            correct: 3
         },
         {
             question: 'Vad var det för färg på Napoleons vita häst?',
@@ -67,7 +70,7 @@ function getQuestions() {
         },
         {
             question: 'Vad är bäst?',
-            answers: ['Teams', 'Discord', 'slack'],
+            answers: ['Teams', 'Discord', 'Slack'],
             correct: 1
         }
     ];
