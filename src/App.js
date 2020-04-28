@@ -6,20 +6,29 @@ import Game from './components/Game';
 import Result from './components/Result';
 
 function App() {
+    const WELCOME = 'welcome', GAME = 'game', RESULT = 'result';
     const [score, setScore] = useState(0);
-    const [currentScreen, setCurrentScreen] = useState('welcome');
+    const [currentScreen, setCurrentScreen] = useState(WELCOME);
 
+    const restartQuiz = () => {
+        setCurrentScreen(GAME);
+        setScore(0);
+    }
     let content = null;
     switch (currentScreen) {
-        case 'welcome':
+        case WELCOME:
             content = ( <Welcome
-                nextScreen={() => setCurrentScreen('game')} /> )
+                nextScreen={() => setCurrentScreen(GAME)} /> )
             break;
-        case 'game':
-            content = ( <Game answeredCorrectly={() => setScore(score + 1)} /> )
+        case GAME:
+            content = ( <Game
+                answeredCorrectly={() => setScore(score + 1)}
+                showResults={() => setCurrentScreen(RESULT)} /> )
             break;
         default:
-            content = ( <Result score={score} /> )
+            content = ( <Result
+                score={score}
+                restartQuiz={restartQuiz} /> )
     }
 
     return (

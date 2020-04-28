@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Game = ({ answeredCorrectly }) => {
+const Game = ({ answeredCorrectly, showResults }) => {
     const questions = getQuestions();
     const [currentQuestion, setCurrentQuestion] = useState(1)
     const [selectedAnswer, setSelectedAnswer] = useState(null)
@@ -13,9 +13,13 @@ const Game = ({ answeredCorrectly }) => {
             answeredCorrectly();  // report score
         }
         setTimeout(() => {
-            setCurrentQuestion(currentQuestion + 1);
-            setSelectedAnswer(null);
-            setUserDecided(false);
+            if( currentQuestion === questions.length) {
+                showResults();
+            } else {
+                setCurrentQuestion(currentQuestion + 1);
+                setSelectedAnswer(null);
+                setUserDecided(false);
+            }
         }, 2000);
     }
 
