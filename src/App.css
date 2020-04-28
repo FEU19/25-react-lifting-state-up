@@ -13,3 +13,11 @@
 .App-link {
   color: #61dafb;
 }
+
+.bordered {
+    border: 1px solid gray;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 2em;
+
+}
