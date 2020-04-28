@@ -17,6 +17,7 @@ function App() {
             break;
         case 'game':
             content = ( <Game /> )
+            break;
         default:
             content = ( <Result score={score} /> )
     }
