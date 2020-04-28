@@ -21,3 +21,11 @@
     margin: 2em;
 
 }
+
+.game > .option {
+    /* border: 2px solid white; */
+    box-sizing: border-box;
+}
+.correct {
+    border: 2px solid lightgreen;
+}

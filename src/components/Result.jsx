@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Result = () => (
+const Result = ({ score }) => (
     <section>
         <h2>Result</h2>
-        <p> You got 0 correct answers! </p>
+        <p> You got {score} correct answers! </p>
     </section>
 )
 
